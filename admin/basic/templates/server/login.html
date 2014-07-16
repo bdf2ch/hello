@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="basic/css/login.css">
+    <link rel="stylesheet" href="basic/css/kube.min.css">
+    <script src="basic/js/angular/angular.min.js"></script>
+    <script src="basic/js/angular/angular-animate.min.js"></script>
+    <script src="basic/js/jquery-1.10.1.min.js"></script>
+    <script src="basic/js/basic.js"></script>
+    <script src="basic/js/data.js"></script>
+    <script src="basic/js/login.js"></script>
+</head>
+<body>
+    <div id="loginBox" ng-controller="LoginCtrl">
+        <form method="post" class="forms">
+
+            <div>
+                <span class="title" ng-if="inRemindPasswordMode == false">Вход в сиcтему</span>
+                <span class="title" ng-if="inRemindPasswordMode == true">Получение пароля</span>
+                <a href="" class="close right" ng-if="inRemindPasswordMode == true" ng-click="cancelRemindPasswordMode()" title="Вернуться ко входу в систему"></a>
+            </div><hr>
+
+            <label ng-show="inRemindPasswordMode == false">
+                Логин &nbsp;<span class="err" ng-repeat="loginError in loginErrors">{{ loginError }}</span>
+                <input class="width-100" type="text" name="login" id="login" placeholder="Введите Ваш логин" size="16" ng-model="login" ng-minlength="5" ng-maxlength="16" required>
+            </label>
+
+            <label ng-show="inRemindPasswordMode == false">
+                Пароль &nbsp;<span  class="err" ng-repeat="passwordError in passwordErrors">{{ passwordError }}</span>
+                <a href="" class="small-link" ng-click="setToRemindPasswordMode()">Забыли пароль?</a>
+                <input class="width-100" type="password" name="password" id="password" placeholder="Введите Ваш пароль" size="40" ng-model="password">
+
+            </label>
+
+            <label ng-show="inRemindPasswordMode == true && remindSuccess == false">
+                E-mail &nbsp;<span  class="err" ng-repeat="EmailError in emailErrors">{{ EmailError }}</span>
+                <input class="width-100" type="text" name="email" id="email" placeholder="Введите Ваш E-mail" size="40" ng-model="email">
+            </label>
+            <div class="successMessage" ng-show="remindSuccess == true && inRemindPasswordMode == true">На указанный Вами E-mail был отправлен Ваш новый пароль для входа в систему.</div>
+        </form>
+        <button class="btn width-100" ng-if="inRemindPasswordMode == false" ng-disabled="inProgress == true" ng-click="send()">Войти</button>
+        <button class="btn width-100" ng-if="inRemindPasswordMode == true && remindSuccess == false" ng-disabled="inProgress == true" ng-click="remind()">Получить пароль</button>
+        <button class="btn width-100" ng-if="inRemindPasswordMode == true && remindSuccess == true" ng-disabled="inProgress == true" ng-click="cancelRemindPasswordMode()">&larr; Назад ко входу в систему</button>
+        <div class="error" ng-show="loginFailed == true && inRemindPasswordMode == false">Пользователь с таким логином и паролем не найден.</div>
+        <div class="error" ng-show="remindFailed == true && inRemindPasswordMode == true">Пользователь с таким e-mail не найден.</div>
+    </div>
+
+</body>
+</html>

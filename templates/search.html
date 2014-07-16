@@ -1,0 +1,27 @@
+<nav class="breadcrumbs breadcrumbs-path">
+    <ul>
+        <li><a href="#/">Весь Мурманск Плюс</a></li>
+        <li><span>Поиск</span></li>
+    </ul>
+</nav>
+
+<h4 class="color-green left">Поиск по запросу "{{ data.searchStringTitle }}"</h4>
+<hr>
+
+<div class="loading-message" ng-show="data.searchInProgress == true">
+    <img class="loading" src="img/loading.gif"><br>
+    Пожалуйста, подождите, выполняется загрузка...
+</div>
+<div class="loading-message" ng-show="data.searchInProgress == false && data.nothingFound == true">
+    По Вашему запросу ничего не найдено.
+</div>
+<div class="units-row" ng-show="data.searchInProgress == false">
+    <div class="unit-50" ng-show="data.searchResult.chapters.length > 0">
+        <h5 class="subheading">Найдено в рубриках ({{ data.searchResult.chapters.length }})</h5>
+        <a href="{{'#/rubrics/' + chapter.id}}" class="search-link" ng-repeat="chapter in data.searchResult.chapters"> {{ chapter.title }} <br></a>
+    </div>
+    <div class="unit-50" ng-show="data.searchResult.companies.length > 0">
+        <h5 class="subheading">Найдено в организациях ({{ data.searchResult.companies.length }})</h5>
+        <a href="{{'#/company/' + company.id}}" class="search-link" ng-repeat="company in data.searchResult.companies"> {{ company.title }} <br></a>
+    </div>
+</div>

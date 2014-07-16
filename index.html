@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="helloMurmansk" id="ng-app" >
+<head>
+    <meta charset="utf-8">
+    <title>Весь Мурманск Плюс</title>
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/kube.min.css">
+
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-route.min.js"></script>
+    <!-- <script src="js/angular-strap.min.js"></script> -->
+    <!-- <script src="js/angular-strap.tpl.min.js"></script> -->
+    <script src="js/app.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/filters.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+
+</head>
+<body>
+    <div id="wrapper">
+        <span class="headerTitle">Весь Мурманск +</span>
+
+        <!-- MENU -->
+        <div id="menu">
+            <div class="units-row-end units-split">
+                <a id="main" href="#/" class="unit-25 menu-item">ГЛАВНАЯ</a>
+                <a id="chapters" href="#/rubrics" class="unit-25 menu-item">РУБРИКИ</a>
+                <a id="about" href="#/about" class="unit-25 menu-item">О СПРАВОЧНИКЕ</a>
+                <a id="feedback" href="#/feedback" class="unit-25 menu-item">ОБРАТНАЯ СВЯЗЬ</a>
+            </div>
+        </div>
+
+        <!-- SEARCH FORM -->
+        <p class="input-groups" ng-controller="SearchBarCtrl">
+            <input type="text" name="go" placeholder="Введите наименование рубрики или организации" ng-model="data.searchString" />
+            <span class="btn-append">
+                <button class="btn btn-green" ng-click="data.search()">Искать</button>
+            </span>
+        </p>
+
+        <!-- CONTENT -->
+        <div id="content" ng-view></div>
+
+        <!-- FOOTER -->
+        <div id="footer">
+            <span class="left">Весь Мурманск Плюс, 2014 г.</span>
+            <span class="right">тел. 203-463</span><br>
+            <span class="right">факс 700-431</span><br>
+            <a href="mailto:info@xn--80adjvfdajtfjfdt7ktb.xn--p1ai" class="right">info@весьмурманскплюс.рф</a><br>
+            <a href="#/feedback" class="right">Отправьте нам сообщение</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+
+<table class="table table-condensed table-striped list">
+    <thead ng-if="toolbar == true">
+        <!-- Тулбар -->
+        <tr ng-if="toolbar == true" class="toolbar">
+            <!-- Есть поля для отображения -->
+            <td class="span12" ng-if="fields.length == 0">
+                <select class="pull-left" ng-model="size">
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <div class="pull-right">
+                    <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="prevPage()" title="Предыдущая страница">&larr;</button>
+                    <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="setPage(currentPage - 1)">{{ currentPage - 1 }}</button>
+                    <button class="btn btn-small" disabled>{{ currentPage }}</button>
+                    <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="setPage(currentPage + 1)">{{ currentPage + 1 }}</button>
+                    <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="nextPage()" title="Следующая страница">&rarr;</button>
+                </div>
+            </td>
+            <!-- Нет полей для отображения -->
+            <td class="span12" colspan="{{ fields.length + isEditable }}" ng-if="fields.length > 0">
+                <select class="pull-left" ng-model="size" ng-options="item['value'] as item['title'] for item in sizes"></select>
+                <div class="pull-right">
+                    <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="prevPage()" title="Предыдущая страница">&larr;</button>
+                    <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="setPage(currentPage - 1)">{{ currentPage - 1 }}</button>
+                    <button class="btn btn-small" disabled>{{ currentPage }}</button>
+                    <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="setPage(currentPage + 1)">{{ currentPage + 1 }}</button>
+                    <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="nextPage()" title="Следующая страница">&rarr;</button>
+                </div>
+            </td>
+        </tr>
+        <!-- Заголовки столбцов -->
+        <tr ng-if="headers.length > 0">
+            <td ng-repeat="header in headers">{{ header }}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Есть поля для отображения -->
+        <tr ng-repeat="row in rows.items" ng-if="fields.length == 0">
+            <td colspan="{{ headers.length }}">{{ row }}</td>
+
+        </tr>
+        <!-- Нет полей для отображения -->
+        <tr ng-repeat="row in rows.items" ng-if="fields.length > 0">
+            <td ng-repeat="field in fields">{{ row[field] }}</td>
+            <td ng-if="isEditable == 1" class="span2">
+                <div class="pull-right">
+                    <!-- Удаление -->
+                    <button class="btn btn-small btn-danger" title="Удалить" ng-if="data.user.permissions.delete == true && row.inEditMode == false && row.inDeleteMode == false" ng-click="row.setToDeleteMode()">
+                        <i class="icon-remove"></i>
+                    </button>
+                    <button class="btn btn-small btn-success" title="Подтвердить удаление" ng-click="deleteUser(row.id)" ng-if="row.inDeleteMode == true && row.inEditMode == false">
+                        <i class="icon-ok"></i>
+                    </button>
+                    <button class="btn btn-small" title="Отмена" ng-if="row.inDeleteMode == true" ng-click="row.cancelDeleteMode()">
+                        <i class="icon-ban-circle"></i>
+                    </button>
+
+                    <!-- редактирование -->
+                    <button class="btn btn-small" title="Редактировать" ng-click="row.setToEditMode()" ng-if="data.user.permissions.edit == true && row.inEditMode == false && row.inDeleteMode == false">
+                        <i class="icon-pencil"></i>
+                    </button>
+                    <button class="btn btn-small btn-success" title="Сохранить изменения" ng-show="row.isChanged == true" ng-click="editUser(row.id)">
+                        <i class="icon-ok"></i>
+                    </button>
+                    <button class="btn btn-small" title="Отмена" ng-click="row.cancelEditMode()" ng-if="row.inEditMode == true">
+                        <i class="icon-ban-circle"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+
+
+
+
+<table class="table table-condensed table-striped list">
+    <thead ng-if="toolbar == true">
+    <!-- Тулбар -->
+    <tr ng-if="toolbar == true" class="toolbar">
+        <!-- Есть поля для отображения -->
+        <td class="span12" ng-if="fields.length == 0">
+            <select class="pull-left" ng-model="size">
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <div class="pull-right">
+                <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="prevPage()" title="Предыдущая страница">&larr;</button>
+                <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="setPage(currentPage - 1)">{{ currentPage - 1 }}</button>
+                <button class="btn btn-small" disabled>{{ currentPage }}</button>
+                <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="setPage(currentPage + 1)">{{ currentPage + 1 }}</button>
+                <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="nextPage()" title="Следующая страница">&rarr;</button>
+            </div>
+        </td>
+        <!-- Нет полей для отображения -->
+        <td class="span12" colspan="{{ fields.length + isEditable }}" ng-if="fields.length > 0">
+            <select class="pull-left" ng-model="size" ng-options="item['value'] as item['title'] for item in sizes"></select>
+            <div class="pull-right">
+                <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="prevPage()" title="Предыдущая страница">&larr;</button>
+                <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="setPage(currentPage - 1)">{{ currentPage - 1 }}</button>
+                <button class="btn btn-small" disabled>{{ currentPage }}</button>
+                <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="setPage(currentPage + 1)">{{ currentPage + 1 }}</button>
+                <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="nextPage()" title="Следующая страница">&rarr;</button>
+            </div>
+        </td>
+    </tr>
+    <!-- Заголовки столбцов -->
+    <tr ng-if="headers.length > 0">
+        <td ng-repeat="header in headers">{{ header }}</td>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Есть поля для отображения -->
+    <tr ng-repeat="row in rows.items" ng-if="fields.length == 0">
+        <td colspan="{{ headers.length }}">{{ row }}</td>
+
+    </tr>
+    <!-- Нет полей для отображения -->
+    <tr ng-repeat="row in rows.items" ng-if="fields.length > 0">
+        <td ng-repeat="field in fields">{{ row[field] }}</td>
+        <td ng-if="isEditable == 1" class="span2">
+            <div class="pull-right">
+                <!-- Удаление -->
+                <button class="btn btn-small btn-danger" title="Удалить" ng-if="data.user.permissions.delete == true && row.inEditMode == false && row.inDeleteMode == false" ng-click="row.setToDeleteMode()">
+                    <i class="icon-remove"></i>
+                </button>
+                <button class="btn btn-small btn-success" title="Подтвердить удаление" ng-click="deleteUser(row.id)" ng-if="row.inDeleteMode == true && row.inEditMode == false">
+                    <i class="icon-ok"></i>
+                </button>
+                <button class="btn btn-small" title="Отмена" ng-if="row.inDeleteMode == true" ng-click="row.cancelDeleteMode()">
+                    <i class="icon-ban-circle"></i>
+                </button>
+
+                <!-- редактирование -->
+                <button class="btn btn-small" title="Редактировать" ng-click="row.setToEditMode()" ng-if="data.user.permissions.edit == true && row.inEditMode == false && row.inDeleteMode == false">
+                    <i class="icon-pencil"></i>
+                </button>
+                <button class="btn btn-small btn-success" title="Сохранить изменения" ng-show="row.isChanged == true" ng-click="editUser(row.id)">
+                    <i class="icon-ok"></i>
+                </button>
+                <button class="btn btn-small" title="Отмена" ng-click="row.cancelEditMode()" ng-if="row.inEditMode == true">
+                    <i class="icon-ban-circle"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

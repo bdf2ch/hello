@@ -1,0 +1,33 @@
+<nav class="breadcrumbs breadcrumbs-path">
+    <ul>
+        <li><a href="#/">Весь Мурманск Плюс</a></li>
+        <li><span>Обратная связь</span></li>
+    </ul>
+</nav>
+
+<h4 class="color-green">Обратная связь</h4>
+<hr>
+
+
+<form method="post" action="" class="forms">
+    <label>
+        Ваше имя &nbsp;<span class="error" ng-repeat="name_error in nameErrors" ng-show="nameErrors.length > 0"> {{ name_error }} </span>
+        <input type="text" name="user-name" class="width-50" ng-model="name"/>
+        <div class="forms-desc">Как к Вам обращаться.</div>
+    </label>
+    <label>
+        Ваш e-mail &nbsp;<span class="error" ng-repeat="email_error in emailErrors" ng-show="emailErrors.length > 0"> {{ email_error }} </span>
+        <input type="text" name="user-email" class="width-50" ng-model="email"/>
+        <div class="forms-desc">Пожалуйста, укажите адрес вашей электронной почты, чтобы мы могли связаться с Вами.</div>
+    </label>
+    <label>
+        Сообщение &nbsp;<span class="error" ng-repeat="message_error in messageErrors" ng-show="messageErrors.length > 0"> {{ message_error }} </span>
+        <textarea class="width-100" rows="15" ng-model="message"></textarea>
+        <div class="forms-desc">Напишите нам Ваши пожелания по работе сайта, замечания о содержащейся в каталоге информации, а так же по вопросам сотрудничества.</div>
+    </label>
+    <p>
+        <button class="btn btn-green width-25" ng-disabled="inProgress == true" ng-click="sendMessage()">Отправить сообщение</button>
+        <img class="loading" src="img/loading.gif" ng-show="inProgress == true">
+        <span class="msg success bold" ng-show="messageSent == true">Сообщение отправлено!</span>
+    </p>
+</form>

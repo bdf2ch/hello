@@ -1,0 +1,100 @@
+<!-- TABS -->
+<div ng-model="activeTab" bs-tabs="tabs">
+</div>
+
+
+<!-- Content table -->
+        <!--
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <td class="span2">Логин</td>
+            <td class="span2">Пароль</td>
+            <td class="span2">Фамилия</td>
+            <td class="span2">Имя</td>
+            <td class="span2">Отчество</td>
+            <td class="span2">E-mail</td>
+            <td class="span3">Права</td>
+            <td class="span2"></td>
+        </tr>
+    </thead>
+    <tr ng-repeat="user in data.users.items | filter:searchText">
+        <td>
+            <span ng-if="user.inEditMode != true"> {{ user.login }} </span>
+            <input type="text" class="input-block-level" ng-model="user.login" ng-if="user.inEditMode == true" ng-change="user.setToChanged()">
+        </td>
+        <td>
+            <span ng-if="user.inEditMode != true"> {{ user.password }} </span>
+            <input type="text" class="input-block-level" ng-model="user.password" ng-if="user.inEditMode == true" ng-change="user.setToChanged()">
+        </td>
+        <td>
+            <span ng-if="user.inEditMode != true"> {{ user.surname }} </span>
+            <input type="text"  class="input-block-level" ng-model="user.surname" ng-if="user.inEditMode == true" ng-change="user.setToChanged()">
+        </td>
+        <td>
+            <span ng-if="user.inEditMode != true"> {{ user.name }} </span>
+            <input type="text" class="input-block-level" ng-model="user.name" ng-if="user.inEditMode == true" ng-change="user.setToChanged()">
+        </td>
+        <td>
+            <span ng-if="user.inEditMode != true"> {{ user.fname }} </span>
+            <input type="text"  class="input-block-level" ng-model="user.fname" ng-if="user.inEditMode == true" ng-change="user.setToChanged()">
+        </td>
+        <td>
+            <span ng-if="user.inEditMode != true"> {{ user.email }} </span>
+            <input type="text"  class="input-block-level" ng-model="user.email" ng-if="user.inEditMode == true" ng-change="user.setToChanged()">
+        </td>
+        <td>
+            <label class="checkbox inline">
+                <input type="checkbox" ng-model="user.permissions.add" ng-change="user.setToChanged()" ng-disabled="user.inEditMode == false" title="Добавление данных">
+                <i class="icon-plus"></i>
+            </label>
+            <label class="checkbox inline">
+                <input type="checkbox" ng-model="user.permissions.edit" ng-change="user.setToChanged()" ng-disabled="user.inEditMode == false" title="Редактирование данных">
+                <i class="icon-pencil"></i>
+            </label>
+            <label class="checkbox inline">
+                <input type="checkbox" ng-model="user.permissions.delete" ng-change="user.setToChanged()" ng-disabled="user.inEditMode == false" title="Удаление данных">
+                <i class="icon-remove"></i>
+            </label>
+        </td>
+        <td>
+            <div class="pull-right">
+                <button class="btn btn-small btn-danger" title="Удалить" ng-if="data.user.isAdministrator == true && user.inEditMode != true" data-unique="1"
+                        data-placement="left"
+                        data-title="Подтвердите удаление"
+                        bs-popover="'templates/user_delete_dialog.html'">
+                    <i class="icon-remove"></i>
+                </button>
+                <button class="btn btn-small" title="Редактировать" ng-click="user.setToEditMode()" ng-if="data.user.isAdministrator == true && user.inEditMode != true">
+                    <i class="icon-pencil"></i>
+                </button>
+                <button class="btn btn-small btn-success" title="Сохранить изменения" ng-show="user.isChanged == true" ng-click="editUser(user.id)">
+                    <i class="icon-ok"></i>
+                </button>
+                <button class="btn btn-small" title="Отмена" ng-click="user.cancelEditMode()" ng-if="user.inEditMode == true">
+                    <i class="icon-ban-circle"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+</table>
+-->
+
+<!-- BOTTOM NAVBAR -->
+<!-- <div class="navbar navbar-fixed-bottom" id="toolbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <a class="btn btn-info pull-left" title="Добавить"
+                   ng-if="data.user.isAdministrator == true && inAddMode == false"
+                   ng-click="setToAddMode()">
+                    <i class="icon-plus"></i> Добавить
+                </a>
+                <form class="navbar-search pull-right">
+                    <input type="text" class="search-query" placeholder="Быстрый поиск" ng-model="searchText">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  -->
+

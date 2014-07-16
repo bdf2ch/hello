@@ -1,0 +1,57 @@
+<table class="table table-condensed table-striped list">
+    <tbody>
+        <tr ng-if="toolbar == true" class="toolbar">
+            <td colspan="{{ fields.length + editable }}">
+                <div class="pull-left">
+                    <select ng-model="size" ng-options="sz as sz for sz in sizes">
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+
+                <div class="pull-right">
+                    <span class="pages">Страница {{ currentPage }} из {{ pagesCount }}</span>
+                    <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="previous()" title="Предыдущая страница">&larr;</button>
+                    <button class="btn btn-small" ng-if="(currentPage - 1) > 0" ng-click="toPage(currentPage - 1)">{{ currentPage - 1 }}</button>
+                    <button class="btn btn-small" disabled>{{ currentPage }}</button>
+                    <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="toPage(currentPage + 1)">{{ currentPage + 1 }}</button>
+                    <button class="btn btn-small" ng-if="(currentPage + 1) <= pagesCount" ng-click="next()" title="Следующая страница">&rarr;</button>
+                </div>
+            </td>
+        </tr>
+        <tr ng-if="headers.length > 0 && fields.length > 0 && fields.length == headers.length">
+            <th ng-repeat="header in headers"> {{ header }} </th>
+        </tr>
+        <tr ng-if="fields.length == 0" ng-repeat="row in data">
+            <td> {{ row }} </td>
+            <td ng-if="editable == 1">
+                <!-- Удаление -->
+                <button class="btn btn-small btn-danger" title="Удалить" ng-if="basic.user.permissions.delete == true && row.inEditMode == false && row.inDeleteMode == false" ng-click="row.setToDeleteMode()">
+                    <i class="icon-remove"></i>
+                </button>
+                <button class="btn btn-small btn-success" title="Подтвердить удаление" ng-click="deleteUser(user.id)" ng-if="basic.user.isAdministrator == true && row.inDeleteMode == true && row.inEditMode == false">
+                    <i class="icon-ok"></i>
+                </button>
+                <button class="btn btn-small" title="Отмена" ng-show="row.inDeleteMode == true" ng-click="row.cancelDeleteMode()">
+                    <i class="icon-ban-circle"></i>
+                </button>
+
+                <!-- редактирование -->
+                <button class="btn btn-small" title="Редактировать" ng-click="row.setToEditMode()" ng-if="basic.user.permissions.edit == true && row.inEditMode == false && row.inDeleteMode == false">
+                    <i class="icon-pencil"></i>
+                </button>
+                <button class="btn btn-small btn-success" title="Сохранить изменения" ng-show="user.isChanged == true" ng-click="editUser(user.id)">
+                    <i class="icon-ok"></i>
+                </button>
+                <button class="btn btn-small" title="Отмена" ng-click="user.cancelEditMode()" ng-if="user.inEditMode == true">
+                    <i class="icon-ban-circle"></i>
+                </button>
+            </td>
+        </tr>
+        <tr ng-if="fields.length > 0" ng-repeat="row in data">
+            <td ng-repeat="field in fields"> {{ row[field] }} </td>
+        </tr>
+    </tbody>
+</table>

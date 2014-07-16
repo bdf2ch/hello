@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="helloAdmin" id="ng-app">
+<head>
+    <title>Панель администратора</title>
+    <link rel="stylesheet" href="basic/css/css.css">
+    <link rel="stylesheet" href="basic/css/bootstrap.min.css">
+
+    <script src="basic/js/jquery-1.10.1.min.js"></script>
+    <script src="basic/js/angular/angular.min.js"></script>
+    <script src="basic/js/angular/angular-route.min.js"></script>
+    <script src="basic/js/angular/angular-animate.min.js"></script>
+    <script src="basic/js/angular-strap.min.js"></script>
+    <script src="basic/js/angular-strap.tpl.min.js"></script>
+    <script src="basic/js/app.js"></script>
+    <script src="basic/js/basic.js"></script>
+    <script src="basic/js/data.js"></script>
+    <script src="basic/js/services.js"></script>
+    <script src="basic/js/controllers.js"></script>
+    <script src="basic/js/directives.js"></script>
+    <script src="basic/js/filters.js"></script>
+    <script src="basic/js/bootstrap.min.js"></script>
+
+    <!-- PROJECT SPECIFIC -->
+    <script src="specific/js/config.js"></script>
+    <script src="specific/js/data_spec.js"></script>
+    <script src="specific/js/services_spec.js"></script>
+    <script src="specific/js/controllers_spec.js"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar navbar-fixed-top" id="navbar" ng-controller="NavbarCtrl">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <a class="brand" href="#">Панель управления</a>
+                    <ul class="nav pull-right" id="user-block" ng-if="data.user.id != 0">
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i> {{ data.user.surname + " " + data.user.name + " " + data.user.fname }}
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href tabindex="-1" ng-click="data.logOut()"><i class="icon-off"></i> Сменить пароль</a></li>
+                                <li><a href tabindex="-1" ng-click="data.logOut()"><i class="icon-off"></i> Выйти</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MENU -->
+    <div id="navigation-menu" ng-controller="MenuCtrl">
+        <span class="menu-title">Меню</span>
+        <div class="menu-item" ng-repeat="menuItem in data.menu.items" ng-show="menuItem.isSystem == true && data.user.isAdministrator == true" id="{{ menuItem.id }}" menuitem>
+            <a href= "{{ menuItem.link }}">
+                <i ng-show="menuItem.icon" class="{{ menuItem.icon }}"></i>
+                {{ menuItem.title }}
+            </a>
+        </div>
+        <div class="menu-item" ng-repeat="menuItem in data.menu.items" ng-show="menuItem.isSystem == false" id="{{ menuItem.id }}" menuitem>
+            <a href= "{{ menuItem.link }}">
+                <i ng-show="menuItem.icon" class="{{ menuItem.icon }}"></i>
+                {{ menuItem.title }}
+            </a>
+        </div>
+   </div>
+
+    <!-- CONTENT -->
+   <div id="content" ng-view></div>
+</body>
+</html>

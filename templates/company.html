@@ -1,0 +1,34 @@
+<nav class="breadcrumbs breadcrumbs-path">
+    <ul>
+        <li><a href="#/">Весь Мурманск Плюс</a></li>
+        <li><a href="#/rubrics">Рубрики</a></li>
+        <li><a href="{{'#/rubrics/' + data.chapters.findItemById(currentCompany.chapterId).id}}">{{data.chapters.findItemById(currentCompany.chapterId).title}}</a></li>
+        <li><span>{{ currentCompany.title }}</span></li>
+    </ul>
+</nav>
+
+<h4 class="color-green left">{{ currentCompany.title }}</h4>
+<hr>
+
+<div class="loading-message" ng-show="inProgress == true">
+    <img class="loading" src="img/loading.gif"><br>
+    Пожалуйста, подождите, выполняется загрузка...
+</div>
+
+<div class="units-row">
+    <a href="{{ currentCompany.web }}" ng-if="currentCompany.web != ''">{{ currentCompany.web }}</a>
+    <span ng-if="currentCompany.mail != '' && currentCompany.web != ''">&nbsp; &nbsp;</span>
+    <a href="mailto:{{ currentCompany.mail }}" ng-if="currentCompany.mail != ''">{{ currentCompany.mail }}</a>
+    <div class="width-100" ng-repeat="address in currentCompany.addresses">
+        <h4 class="subheading" > {{ address.address }} </h4>
+        <table class="table-flat unit-100" id="contacts" ng-repeat="contact in address.contacts">
+            <tr>
+                <td class="subject"> {{ contact.subject }} </td>
+                <td class="leader">
+                    <div></div>
+                </td>
+                <td class="phone"> {{ contact.phone }} </td>
+            </tr>
+        </table>
+    </div>
+</div>

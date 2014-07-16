@@ -1,0 +1,190 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#wrapper {
+    position: relative; display: block;
+    left: auto; right: auto;
+    width: 1000px;
+    margin-left: auto; margin-right: auto;
+    padding-bottom: 120px;
+    background: url("../img/logo_.jpg") no-repeat top right; background-size: 22%;
+    border: 1px solid transparent;
+
+    min-height: 100%;
+    margin-bottom: -100px;
+}
+
+#menu {
+    height: 40px;
+    margin-top: 70px; margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 5px 0px;
+}
+
+    #menu .menu-item {
+        height: 40px;
+        padding-top: 8px;
+        text-decoration: none; text-align: center; vertical-align: bottom; font-weight: bold; font-family: "Arial"; color: #328044; text-shadow: 0 1px 0 #DBDBDB;
+        background: #99FF99;
+    }
+    #menu .menu-item:hover {
+        background: #93F093;
+    }
+    #menu .menu-item.active {
+        color: black;
+        background: #93F093;
+    }
+
+
+.headerTitle {
+    display: inline-block; float: left;
+    margin-top: 25px;
+    font-size: 45px; font-family: "Calibri"; color: #328044; text-shadow: 0 1px 0 #DBDBDB; //font-weight: bold;
+}
+
+.chapter-group {
+    display: block; float: left; position: relative;
+    min-height: 270px; width: 100%;
+    //width: 249px;
+    //padding-right: 10px; padding-bottom: 10px;
+    margin-bottom: 10px;
+    //border: 1px solid black;
+}
+.chapter-link {
+        display: block; //float: left;
+        //padding-bottom: 5px;
+        margin-bottom: 10px;
+        text-decoration: none; font-size: 14px; line-height: 17px;
+}
+
+.search-link {
+    text-decoration: none;
+}
+
+    .chapter-group .expand-link {
+        display: inline-block; vertical-align: bottom;
+        height: 19px;
+        margin-top: 10px;
+        padding: 0px;
+        text-decoration: none; font-size: 11px; color: #000000;
+        border-bottom: 1px dotted black;
+    }
+    .chapter-group .expand-link:hover {
+        color: red;
+        border-bottom: 1px dotted red;
+    }
+
+.divider {
+    display: block;
+    border: 1px solid red;
+}
+
+hr {
+    display: block; clear: both;
+    margin-top: 0px !important; margin-bottom: 10px !important;
+}
+
+h5 {
+    margin-bottom: 0px !important;
+}
+
+.pagination {
+    margin-bottom: 10px !important;
+}
+
+.subject {
+    //width: inherit !important;
+    padding-left: 20px !important; padding-right: 5px !important;
+    font-style: italic; white-space: nowrap;
+}
+
+.phone {
+    //width: 100% !important;
+    padding-left: 5px !important;
+    //vertical-align: bottom !important;
+    //border-bottom: 1px dotted black !important;
+}
+
+.underline {
+    width: 100% !important;
+    border-bottom: 1px dotted black !important;
+}
+
+.letter {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 27px; color: #328044; font-family: "Georgia"; font-weight: bold; text-shadow: #D4D4D4 0px 1px 0px;
+}
+
+.letter-link {
+    display: inline-block;
+    width: 30px; height: 30px;
+    margin-left: 5px;
+    //padding: 10px; padding-top: 3px;
+    text-decoration: none; color: green; text-align: center; vertical-align: baseline;
+    background: #99FF99;
+}
+    .letter-link:hover {
+        color: green;
+        background: #93F093;
+    }
+
+.loading {
+    display: inline-block;
+    margin-left: 10px;
+    padding-top: 3px;
+}
+
+.loading-message {
+    display: block;
+    margin-left: auto; margin-right: auto;
+    color: grey; text-align: center;
+}
+
+.msg {
+    vertical-align: text-bottom;
+    margin-left: 10px;
+}
+
+#contacts {
+    margin-bottom: 3px !important;
+}
+
+#contacts td {
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+#contacts .phone {
+    text-align: right;
+}
+
+.leader {
+    width: 100%;
+}
+    .leader div {
+        display: inline-block;
+        width: 100%;
+        border-bottom: 1px dotted black;
+    }
+
+#footer {
+    bottom: 0px; position: absolute;
+    left: 0px; right: 0px;
+    height: 100px;
+    padding: 10px;
+    color: white;
+    background: url("../img/tex3.png") #328044;
+}
+    #footer a {
+        text-decoration: none; color: white;
+        //border-bottom: 1px dotted white;
+    }
+    #footer a:hover {
+        color: orange;
+        //border-bottom: 1px dotted orange;
+    }

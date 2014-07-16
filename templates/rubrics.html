@@ -1,0 +1,36 @@
+<nav class="breadcrumbs breadcrumbs-path">
+    <ul>
+        <li><a href="#/">Весь Мурманск Плюс</a></li>
+        <li><span>Рубрики</span></li>
+    </ul>
+</nav>
+
+<h4 class="color-green">Рубрики</h4>
+<hr>
+<div class="units-row">
+<a href="" class="letter-link" ng-repeat="group in data.groups" ng-show="group.chapters.length > 0" ng-click="scroll(group.id)"> {{ group.letter }} </a>
+</div>
+<!--
+<div class="units-row">
+    <div class="width-50" ng-repeat="group in data.groups" ng-show="group.chapters.length > 0">
+        <span class="letter"> {{ group.letter }} </span><br>
+        <a href="" class="chapter-link" ng-repeat="chapter in group.chapters"> {{ chapter.title }} <sup> {{ chapter.total }} </sup></a><br>
+    </div>
+</div>
+-->
+
+
+<div class="units-row">
+    <div class="unit-50">
+        <div ng-repeat="group in data.left_col" ng-show="group.chapters.length > 0">
+            <span class="letter" id="{{ group.id }}"> {{ group.letter }} </span><br>
+            <a href="{{ '#/rubrics/' + chapter.id }}" class="chapter-link" ng-repeat="chapter in group.chapters"> {{ chapter.title }} <sup> {{ chapter.total }} </sup></a><br>
+        </div>
+    </div>
+    <div class="unit-50">
+        <div ng-repeat="group in data.right_col" ng-show="group.chapters.length > 0">
+            <span class="letter" id="{{ group.id }}"> {{ group.letter }} </span><br>
+            <a href="{{ '#/rubrics/' + chapter.id }}" class="chapter-link" ng-repeat="chapter in group.chapters"> {{ chapter.title }} <sup> {{ chapter.total }} </sup></a><br>
+        </div>
+    </div>
+</div>

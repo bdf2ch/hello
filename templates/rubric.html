@@ -1,0 +1,81 @@
+<nav class="breadcrumbs breadcrumbs-path">
+    <ul>
+        <li><a href="#/">Весь Мурманск Плюс</a></li>
+        <li><a href="#/rubrics">Рубрики</a></li>
+        <li><span>{{ data.chapters.findItemById(params.rubricId).title }}</span></li>
+    </ul>
+</nav>
+
+<h4 class="color-green left">{{ data.chapters.findItemById(params.rubricId).title }}</h4>
+<ul class="pagination right" ng-show="pages > 1">
+    <li><a href="" title="Предыдущая страница" ng-show="currentPage > 1" ng-click="prev()">&larr;</a></li>
+    <li><span>{{ currentPage }} из {{ pages }}</span></li>
+    <li><a href="" title="Следующая страница" ng-show="currentPage < pages" ng-click="next()">&rarr;</a></li>
+</ul>
+<hr>
+
+<div class="loading-message" ng-show="inProgress == true">
+    <img class="loading" src="img/loading.gif"><br>
+    Пожалуйста, подождите, выполняется загрузка...
+</div>
+
+<div class="units-row">
+    <div class="unit-50">
+        <table class="table-stripped width-100">
+            <tr ng-repeat="org in left_col.items">
+                <td>
+                    <h5>{{ org.title }}</h5>
+                    <a href="{{ org.web }}" ng-if="org.web != ''">{{ org.web }}</a>
+                    <span ng-if="org.mail != '' && org.web != ''">&nbsp; &nbsp;</span>
+                    <a href="mailto:{{ org.mail }}" ng-if="org.mail != ''">{{ org.mail }}</a>
+                    <div class="width-100" ng-repeat="address in org.addresses">
+                        <h4 class="subheading" > {{ address.address }} </h4>
+                        <table class="table-flat unit-100" id="contacts" ng-repeat="contact in address.contacts">
+                            <tr>
+                                <td class="subject"> {{ contact.subject }} </td>
+                                <td class="leader">
+                                    <div></div>
+                                </td>
+                                <td class="phone"> {{ contact.phone }} </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="unit-50">
+        <table class="table-stripped width-100">
+            <tr ng-repeat="org in right_col.items">
+                <td>
+                    <h5>{{ org.title }}</h5>
+                    <a href="{{ org.web }}" ng-if="org.web != ''">{{ org.web }}</a>
+                    <span ng-if="org.mail != '' && org.web != ''">&nbsp; &nbsp;</span>
+                    <a href="mailto:{{ org.mail }}" ng-if="org.mail != ''">{{ org.mail }}</a>
+                    <div class="width-100" ng-repeat="address in org.addresses">
+                        <h4 class="subheading" > {{ address.address }} </h4>
+                        <table class="table-flat unit-100" id="contacts" ng-repeat="contact in address.contacts">
+                            <tr>
+                                <td class="subject"> {{ contact.subject }} </td>
+                                <td class="leader">
+                                    <div></div>
+                                </td>
+                                <td class="phone"> {{ contact.phone }} </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <!--
+    <div ng-repeat="org in companies.items">
+        <h5> {{ org.title }} </h5>
+        <h5 class="subheading" ng-repeat="address in org.addresses">{{ address.address }}</h5><br>
+    </div>
+    -->
+</div>

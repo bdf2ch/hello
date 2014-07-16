@@ -1,0 +1,39 @@
+<div class="units-row">
+    <div class="unit-25">
+        <div class="chapter-group" ng-repeat="col1 in data.col_one">
+            <div class="group">
+                <span class="letter left"> {{ col1.letter }} </span>
+                <!-- <a href="" class="expand-link right" ng-if="col1.chapters.length > 5">Показать все</a> -->
+            </div>
+            <a href="{{ '#/rubrics/' + chapter.id}}" class="chapter-link" ng-repeat="chapter in col1.chapters | limitTo: col1.limit"> {{ chapter.title }} <br></a>
+            <a href="" class="expand-link left" ng-if="col1.chapters.length > 5 && col1.limit != col1.chapters.length" ng-click="expand(col1.id)">Показать все</a>
+        </div>
+    </div>
+    <div class="unit-25">
+        <div class="chapter-group" ng-repeat="col2 in data.col_two">
+            <div class="group">
+                <span class="letter left"> {{ col2.letter }} </span>
+            </div>
+            <a href="{{ '#/rubrics/' + chapter.id}}" class="chapter-link" ng-repeat="chapter in col2.chapters | limitTo: col2.limit"> {{ chapter.title }} <br></a>
+            <a href="" class="expand-link left" ng-if="col2.chapters.length > 5 && col2.limit != col2.chapters.length" ng-click="expand(col2.id)">Показать все</a>
+        </div>
+    </div>
+    <div class="unit-25">
+        <div class="chapter-group" ng-repeat="col3 in data.col_three">
+            <div class="group">
+                <span class="letter left"> {{ col3.letter }} </span>
+            </div>
+            <a href="{{ '#/rubrics/' + chapter.id}}" class="chapter-link" ng-repeat="chapter in col3.chapters | limitTo: col3.limit"> {{ chapter.title }} <br></a>
+            <a href="" class="expand-link left" ng-if="col3.chapters.length > 5 && col3.limit != col3.chapters.length" ng-click="expand(col3.id)">Показать все</a>
+        </div>
+    </div>
+    <div class="unit-25">
+        <div class="chapter-group" ng-repeat="col4 in data.col_four">
+            <div class="group">
+                <span class="letter left"> {{ col4.letter }} </span>
+            </div>
+            <a href="{{ '#/rubrics/' + chapter.id}}" class="chapter-link" ng-repeat="chapter in col4.chapters | limitTo: col4.limit"> {{ chapter.title }} <br></a>
+            <a href="" class="expand-link left" ng-if="col4.chapters.length > 5 && col4.limit != col4.chapters.length" ng-click="expand(col4.id)">Показать все</a>
+        </div>
+    </div>
+</div>
